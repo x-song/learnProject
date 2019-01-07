@@ -12,12 +12,12 @@
     </el-row>
 
     <el-dialog
-        title="登录失败"
-        :visible.sync="dialogVisible"
-        width="30%"
-        :before-close="closeFn">
-        <span>用户名或密码不正确</span>
-        <span slot="footer" class="dialog-footer">
+      title="登录失败"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="closeFn">
+      <span>{{ errorTips }}</span>
+      <span slot="footer" class="dialog-footer">
 
       <el-button type="primary" @click="closeFn">确 定</el-button>
     </span>
@@ -46,15 +46,21 @@
 
     return new Promise((resolve, reject) => {
       let delay = Math.random() * MAX_AJAX_TIME ;
+      const httpCode  = {}
 
       setTimeout(() => {
-
-        console.log("本次异步请求耗时：" + delay + "ms");
-        if(at === account.user && ps === account.password){
-          resolve();
+        let isSuccess = Math.random()>0.5;
+        console.log( isSuccess )
+        if (isSuccess){
+          httpCode.status = 200;
+          resolve(httpCode);
         }else{
           reject();
         }
+
+
+        // console.log("本次异步请求耗时：" + delay + "ms");
+
 
 
       }, delay);
@@ -68,6 +74,7 @@
     name: 'App',
     data(){
       return {
+        errorTips:'',
         dialogVisible:false,
         loading: false,
         ipt : '',
@@ -97,32 +104,46 @@
         return `${y}年${m}月${day}日${h}时${min}分${s}秒`;
       },
       login(){
-        this.loading = true;
+        this.loading  = true;
+        ajax(this.ipt,this.pas).then((result) => {
 
-        ajax(this.ipt,this.pas).then(() => {
-          let dataObj = {
-            time:this.timeStr(),
-            account:{
-              name:this.ipt
+          if(result.status === 200){
+            this.loading  = false;
+            const isLogin  = this.ipt === account.user && this.pas === account.password ;
+            if(isLogin){
+              let dataObj = {
+                time:this.timeStr(),
+                account:{
+                  name:this.ipt
+                }
+              }
+              let storage = window.localStorage;
+              let dataObjStr = JSON.stringify(dataObj);
+              storage.setItem("dataStr",dataObjStr);
+              this.loading = false;
+
+              this.$router.push(
+                {
+                  name:'home',
+                  path:`/home`,
+
+                }
+              );
+            }else {
+              this.errorTips = '用户名或密码不正确'
+              this.dialogVisible = true;
             }
+
+
           }
-          let storage = window.localStorage;
-          let dataObjStr = JSON.stringify(dataObj);
-          storage.setItem("dataStr",dataObjStr);
-          this.loading = false;
 
-          this.$router.push(
-            {
-              name:'home',
-              path:`/home`,
-
-            }
-          );
 
 
         }).catch(() => {
+          this.errorTips = '请求失败'
+          this.loading = false;
           this.dialogVisible = true;
-          // console.log('fail');
+          console.log('请求失败');
         })
 
 
