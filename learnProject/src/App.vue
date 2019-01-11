@@ -2,15 +2,17 @@
 
 
     <div id="app" >
-
-        <router-view></router-view>
-
+      <router-view></router-view>
     </div>
 </template>
 
 <script>
 
 
+import  {  AO  } from  './test';
+let ao = new AO()
+
+console.log( ao.get() )
 
 
 export default {
@@ -24,9 +26,7 @@ export default {
 
   },
   methods:{
-    login(){
 
-    }
   }
 }
 </script>

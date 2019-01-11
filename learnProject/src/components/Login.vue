@@ -1,34 +1,39 @@
 <template>
   <div class="wrap-box" v-loading="loading">
-    <div class="title">登录框</div>
-    <el-row>
-      <el-input v-model="ipt" placeholder="请输入用户名"></el-input>
-      <el-input v-model="pas" placeholder="请输入密码" class="mg-10" type="password"></el-input>
-    </el-row>
+    <!--<div class="title">登录框</div>-->
+    <!--<el-row>-->
+      <!--<el-input v-model="ipt" placeholder="请输入用户名"></el-input>-->
+      <!--<el-input v-model="pas" placeholder="请输入密码" class="mg-10" type="password"></el-input>-->
+    <!--</el-row>-->
 
-    <el-row class="button-wrap">
-      <el-button type="success" @click="login">登录</el-button>
-      <!--<el-button type="text">忘记密码</el-button>-->
-    </el-row>
+    <!--<el-row class="button-wrap">-->
+      <!--<el-button type="success" @click="login">登录</el-button>-->
 
-    <el-dialog
-      title="登录失败"
-      :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="closeFn">
-      <span>{{ errorTips }}</span>
-      <span slot="footer" class="dialog-footer">
+    <!--</el-row>-->
 
-      <el-button type="primary" @click="closeFn">确 定</el-button>
-    </span>
-    </el-dialog>
+    <!--<el-dialog-->
+      <!--title="登录失败"-->
+      <!--:visible.sync="dialogVisible"-->
+      <!--width="30%"-->
+      <!--:before-close="closeFn">-->
+      <!--<span>{{ errorTips }}</span>-->
+      <!--<span slot="footer" class="dialog-footer">-->
 
+      <!--<el-button type="primary" @click="closeFn">确 定</el-button>-->
+    <!--</span>-->
+    <!--</el-dialog>-->
 
+    <div>
+      <p>test props</p>
+      <TestProps :Arr="arr1"></TestProps>
+    </div>
 
   </div>
 </template>
 
 <script>
+
+import  TestProps from  './propsTest'
 
   //模拟用户名和密码
 
@@ -74,6 +79,7 @@
     name: 'App',
     data(){
       return {
+        arr1:[1,2,4],
         errorTips:'',
         dialogVisible:false,
         loading: false,
@@ -151,6 +157,9 @@
 
 
       }
+    },
+    components:{
+      TestProps
     }
   }
 </script>

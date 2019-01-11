@@ -6,6 +6,7 @@ import Home from '@/components/Home'
 Vue.use(Router)
 
 export default new Router({
+
   routes: [
     {
       path: '/',
@@ -15,7 +16,10 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      meta:{
+        requireAuth:true
+      }
     }
   ]
 })
