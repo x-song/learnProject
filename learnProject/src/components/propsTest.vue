@@ -12,7 +12,7 @@
       props:{
         Arr: {
           type: Array,
-          default: function () {
+          default () {
             return [1,2,3]
           }
         }
