@@ -15,10 +15,11 @@
           }
         },
       created() {
-        let storage = window.localStorage;
-        let info =  JSON.parse(storage.getItem("dataStr"));
-        this.name = info.account.name;
-        this.time = info.time;
+        // let storage = window.localStorage;
+        // let info =  JSON.parse(storage.getItem("dataStr"));
+        // this.name = info.account.name;
+        // this.time = info.time;
+        console.log('来到home')
       },
       methods:{
         exitFn(){

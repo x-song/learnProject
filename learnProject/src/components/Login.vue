@@ -25,7 +25,7 @@
 
     <div>
       <p>test props</p>
-      <TestProps :Arr="arr1"></TestProps>
+     <button @click="toHome">跳转到home</button>
     </div>
 
   </div>
@@ -93,6 +93,9 @@ import  TestProps from  './propsTest'
 
     },
     methods:{
+      toHome(){
+        this.$router.push('/home')
+      },
       closeFn(){
         this.dialogVisible = false;
         this.loading = false;
