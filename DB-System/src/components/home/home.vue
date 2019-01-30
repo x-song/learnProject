@@ -17,8 +17,8 @@
       }
     },
     components:{
-      Header,
-      Role
+      Header
+      // Role
     }
 
   }
