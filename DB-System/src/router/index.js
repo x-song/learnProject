@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import Home from '@/components/home/home'
 import  defaultGroup from '@/components/module-db/db-list/defaultGroup'
 import  user from '@/components/module-sys-manager/authorityList/user'
+import  role from '@/components/module-sys-manager/authorityList/role'
 import  menuList from '@/components/module-sys-manager/authorityList/menuList'
 Vue.use(Router)
 
@@ -31,6 +32,12 @@ export default new Router({
               name: 'user',
 
               component: user,
+            },
+            {
+              path: 'role',
+              name: 'role',
+
+              component: role,
             }
           ]
         },

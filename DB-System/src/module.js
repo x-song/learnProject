@@ -3,10 +3,12 @@ export default {
       {
         'title':'系统管理',
         'btnAuthorityCode':'',
+        'index':1,
         'url':'/home/'
       },
       {
         'title':'数据库',
+        'index':2,
         'btnAuthorityCode':'',
         'url':'/home/defaultGroup'
       }

@@ -19,11 +19,11 @@
                   <span>权限管理</span>
                 </template>
 
-                <router-link to="/home/user">
+                <router-link to="/home/authorityList/user">
                     <el-menu-item index="1-1">用户管理</el-menu-item>
                 </router-link>
-                <router-link to="/home/role"><el-menu-item index="1-2">角色管理</el-menu-item></router-link>
-                <router-link to="/home/menu"><el-menu-item index="1-3">菜单管理</el-menu-item></router-link>
+                <router-link to="/home/authorityList/role"><el-menu-item index="1-2">角色管理</el-menu-item></router-link>
+                <router-link to="/home/authorityList/role"><el-menu-item index="1-3">菜单管理</el-menu-item></router-link>
 
 
 
@@ -78,7 +78,6 @@
     .section-wrap{
       flex: 1;
       display: flex;
-
       .aside-wrap{
           width: 250px;
           .el-col-12{
@@ -87,7 +86,6 @@
       }
       .content{
         width: 100%;
-        background: #eee;
       }
     }
 

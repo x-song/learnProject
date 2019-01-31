@@ -78,7 +78,7 @@
     }
     .content{
       width: 100%;
-      background: #eee;
+
     }
   }
 
